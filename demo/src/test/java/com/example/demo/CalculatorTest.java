@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.get;
+
 
 @WebMvcTest(Calculator.class)
 public class CalculatorTest {
@@ -17,7 +17,7 @@ public class CalculatorTest {
 
     @Test
     public void testingAdd() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/math/caclculate?operation=add&x=4&y=6");
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=add&x=4&y=6");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
@@ -25,7 +25,7 @@ public class CalculatorTest {
     }
     @Test
     public void testingSubtract() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/math/caclculate?operation=subtract&x=4&y=6");
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=subtract&x=4&y=6");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
@@ -33,7 +33,7 @@ public class CalculatorTest {
     }
     @Test
     public void testingMultiply() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/math/caclculate?operation=multiply&x=4&y=6");
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=multiply&x=4&y=6");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
@@ -41,7 +41,7 @@ public class CalculatorTest {
     }
     @Test
     public void testingDivide() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/math/caclculate?operation=divide&x=30&y=5");
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=divide&x=30&y=5");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
@@ -49,11 +49,19 @@ public class CalculatorTest {
     }
     @Test
     public void testingDefaultSum() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/math/caclculate?x=30&y=5");
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?x=30&y=5");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("35"));
+    }
+    @Test
+    public void testingArraySum() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/sum?n=2&n=3&n=4");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("9"));
     }
 
 }

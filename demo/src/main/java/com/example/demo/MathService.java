@@ -12,4 +12,11 @@ public class MathService {
             return Math.addExact(x,y);
         }
     }
+    public static Integer sum(Integer [] array){
+        Integer sum =0;
+        for(var i=0; i<array.length; i++){
+            sum+=array[i];
+        }
+        return sum;
+    }
 }
