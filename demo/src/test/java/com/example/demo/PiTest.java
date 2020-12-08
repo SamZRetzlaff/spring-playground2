@@ -16,7 +16,7 @@ public class PiTest {
     MockMvc mvc;
 
     @Test
-    public void testingPages() throws Exception {
+    public void testingPi() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders.get("/math/pi");
 
         this.mvc.perform(request)
