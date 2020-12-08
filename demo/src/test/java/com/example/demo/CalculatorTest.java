@@ -55,13 +55,36 @@ public class CalculatorTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("35"));
     }
+//    @Test
+//    public void testingArraySum() throws Exception {
+//        RequestBuilder request = MockMvcRequestBuilders.get("/math/sum?n=2&n=3&n=4");
+//
+//        this.mvc.perform(request)
+//                .andExpect(status().isOk())
+//                .andExpect(content().string("9"));
+//    }
     @Test
-    public void testingArraySum() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/math/sum?n=2&n=3&n=4");
+    public void testingVolume() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/volume/3/4/5");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("9"));
+                .andExpect(content().string("60"));
     }
+    @Test
+    public void testingVolumePost() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.post("/math/volume/3/4/5");
 
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("60"));
+    }
+    @Test
+    public void testingVolumePatch() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.patch("/math/volume/3/4/5");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("60"));
+    }
 }

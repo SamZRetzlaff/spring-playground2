@@ -19,4 +19,8 @@ public class MathService {
         }
         return sum;
     }
+    public static Integer volume(int l, int w, int h){
+        Integer volume = l*w*h;
+        return volume;
+    }
 }
