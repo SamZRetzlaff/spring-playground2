@@ -3,9 +3,15 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.util.Random;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -86,5 +92,32 @@ public class CalculatorTest {
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("60"));
+    }
+    @Test
+    public void testRectangle() throws Exception {
+        String expectedString = "Area: 15";
+
+        MockHttpServletRequestBuilder request = post("/math/area")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("type", "rectangle")
+                .param("width", "5")
+                .param("height", "3");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string(expectedString));
+    }
+    @Test
+    public void testCircle() throws Exception {
+        String expectedString = "Area: 28.274333882308138";
+
+        MockHttpServletRequestBuilder request = post("/math/area")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("type", "circle")
+                .param("radius", "3");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string(expectedString));
     }
 }
