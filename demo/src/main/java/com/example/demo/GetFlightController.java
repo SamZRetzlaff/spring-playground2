@@ -36,11 +36,11 @@ public class GetFlightController {
         Flight flight2 = new Flight();
         Flight.Ticket ticket2 = new Flight.Ticket();
         Flight.Ticket.Passenger passenger2 = new Flight.Ticket.Passenger();
-        flight2.setDeparts("2017-04-21 14:34");
-        ticket2.setPrice("200");
-        passenger2.setFirstName("Some name");
-        passenger2.setLastName("Some other name");
-        
+        flight2.setDeparts("2017-08-20 01:00");
+        ticket2.setPrice("300");
+        passenger2.setFirstName("Some name1");
+        passenger2.setLastName("Some other name1");
+
         return Arrays.asList(flight1, flight2);
     }
 }
