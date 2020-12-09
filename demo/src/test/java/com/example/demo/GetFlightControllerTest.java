@@ -23,15 +23,13 @@ public class GetFlightControllerTest {
     public void testFlight1() throws Exception{
         RequestBuilder request = MockMvcRequestBuilders.get("/flights/flight");
         this.mvc.perform(request)
-//                get("/flights/flight")
-//                    .accept(MediaType.APPLICATION_JSON_UTF8)
-//                    .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.departs", is ("2017-04-21 14:34")))
-                .andExpect(jsonPath("$.price", is ("200")))
-                .andExpect(jsonPath("$.firstName", is ("Some name")))
-                .andExpect(jsonPath("$.lastName", is ("Some other name")))
-;
+                .andExpect(jsonPath("$.ticket.price", is ("200")))
+                .andExpect(jsonPath("$.ticket.passenger.firstName", is ("Some name")))
+                .andExpect(jsonPath("$.ticket.passenger.lastName", is ("Some other name")));
     }
+    
+
 }
 
