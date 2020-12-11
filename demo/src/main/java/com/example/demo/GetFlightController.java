@@ -1,8 +1,6 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -50,4 +48,10 @@ public class GetFlightController {
 
         return Arrays.asList(flight1, flight2);
     }
+
+//    @PostMapping("/tickets/total")
+//    public String getTotal(@RequestBody Flight flights){
+//        return flights.getTicket().get()
+//    }
+
 }
